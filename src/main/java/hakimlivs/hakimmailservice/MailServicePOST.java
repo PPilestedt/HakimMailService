@@ -272,6 +272,9 @@ public class MailServicePOST
 		
 		
 		tempString = correctIfStringIsNull(fromString);
+		
+		
+		
 		emailLength = tempString.length();
 		
 		if(emailLength == 0)
@@ -343,15 +346,13 @@ public class MailServicePOST
 		returnString;
 		
 		
-		try
-		{
-			returnString = string;
-			
-		}
-		catch(NullPointerException e)
+		
+		returnString = string;
+		
+		if(returnString == null)
 		{
 			returnString = "";
-			
+		
 		}
 		
 		

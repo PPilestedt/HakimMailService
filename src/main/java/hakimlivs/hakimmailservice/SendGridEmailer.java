@@ -13,7 +13,50 @@ public class SendGridEmailer
 {
 	public static void main(String[] args) throws IOException
 	{
-		Email from = new Email("noreply.hakimlivs@gmail.com");
+		MailServicePOST
+		MSPOST;
+		
+		String
+		toPost ,
+		fromPost ,
+		subjectPost ,
+		contentPost ,
+		
+		toGet ,
+		fromGet ,
+		subjectGet,
+		contentGet;
+		
+		
+		toPost = "<EPOST_ADDRESS>";
+		subjectPost = "ämne";
+		contentPost = "innehåll";
+		
+		
+		MSPOST = new MailServicePOST(toPost);
+		MSPOST.setSubject(subjectPost);
+		MSPOST.setContent(contentPost);
+		
+		
+		toGet = MSPOST.getTo();
+	//	fromGet = MSPOST.getFrom();
+		subjectGet = MSPOST.getSubject();
+		contentGet = MSPOST.getContent();
+		
+		
+		
+		
+		
+		
+		
+		MSPOST.send();
+		
+		
+		
+		
+		
+		
+	/*	Email from = new Email("noreply.hakimlivs@gmail.com");
 		Email to = new Email("noreply.hakimlivs@gmail.com"); // use your own email address here
 		
 		String subject = "Sending with Twilio SendGrid is Fun";
@@ -32,7 +75,7 @@ public class SendGridEmailer
 		
 		System.out.println(response.getStatusCode());
 		System.out.println(response.getHeaders());
-		System.out.println(response.getBody());
+		System.out.println(response.getBody());*/
 	}
 	
 }
