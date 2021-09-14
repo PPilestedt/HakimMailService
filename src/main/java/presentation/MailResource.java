@@ -1,25 +1,35 @@
 package presentation;
-
+import application.MailService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.Mail;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import domain.MailContent;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@CrossOrigin
+@RequestMapping(path="/")
 public class MailResource {
 
+    private final MailService mailService = new MailService();
 
-    @PostMapping
-    public String sendWelcomMail(@RequestBody String jsonbody) throws JsonProcessingException {
+    @PostMapping("/")
+    public String index(){
+        return "Mailservice running";
+    }
+
+    @PostMapping("/send")
+    public String sendWelcomeMail(@RequestBody String jsonbody) throws JsonProcessingException {
+
+        //TODO: Skriv om denna så att det inte är massa logik här
+
         ObjectMapper objectMapper = new ObjectMapper();
-        Mail mail = objectMapper.readValue(jsonbody, Mail.class);
+        MailContent mail = objectMapper.readValue(jsonbody, MailContent.class);
 
-
-
-        return "sending welcome mail";
+        if(mailService.sendMailToSendgrid(mail)){
+            return "Mail sent to " + mail.getTo() + " from " + mail.getFrom();
+        }else{
+            return "Failed to send mail";
+        }
     }
 
 
