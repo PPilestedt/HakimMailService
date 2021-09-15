@@ -1,4 +1,4 @@
-package domain;
+package hakimlivs.hakimmailservice.domain;
 
 import com.sendgrid.helpers.mail.objects.Email;
 

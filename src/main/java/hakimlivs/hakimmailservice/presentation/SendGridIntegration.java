@@ -1,4 +1,4 @@
-package application;
+package hakimlivs.hakimmailservice.presentation;
 
 import com.sendgrid.Method;
 import com.sendgrid.Request;
@@ -7,7 +7,8 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
-import domain.MailContent;
+import hakimlivs.hakimmailservice.domain.MailContent;
+
 
 import java.io.IOException;
 
